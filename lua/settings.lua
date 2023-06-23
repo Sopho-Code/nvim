@@ -39,5 +39,8 @@ vim.o.smartcase = true
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- mouse event
+vim.opt.mousemoveevent = true
+
 -- Colorscheme
 require('onedark').load()

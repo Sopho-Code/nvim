@@ -18,14 +18,14 @@ bind("v", "<C-j>", ":move '>+1<CR>gv=gv")
 bind("v", "<C-k>", ":move '<-2<CR>gv=gv")
 
 -- Close buffer
-bind("n", "<leader>bq", ":bdelete!<CR>")
+bind("n", "<leader>cb", ":bdelete!<CR>")
 
 -- Move to last active buffer
-bind("n", "<leader>bl", ":buffer #<CR>")
+bind("n", "<leader>lb", ":buffer #<CR>")
 
 -- Navigate between buffer
-bind("n", "<leader>[b", ":bprevious<CR>")
-bind("n", "<leader>]b", ":bnext<CR>")
+bind("n", "<M-,>", ":bprevious<CR>")
+bind("n", "<M-.>", ":bnext<CR>")
 
 -- Open new tabpage
 bind("n", "<leader>tn", ":tabnew<CR>")
@@ -44,8 +44,9 @@ bind("n", "<leader>uh", "<cmd>set invhlsearch<CR>")
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>o', builtin.oldfiles, {})
 
 -- LSP MAPPINGS
 -- Global mappings.
