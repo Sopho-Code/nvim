@@ -10,6 +10,10 @@ return {
                       luasnip.lsp_expand(args.body)
                     end,
                   },
+                window = {
+                  completion = cmp.config.window.bordered(),
+                  documentation = cmp.config.window.bordered()
+                },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
                     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
@@ -39,14 +43,19 @@ return {
                     end, { 'i', 's' }),
                 }),
                 sources = {
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                { name = 'nvim_lsp', keyword_length = 1 },
+                { name = "nvim_lsp_signature_help" }, { name = 'luasnip' },
+                { name = "path" }, { name = 'buffer' }, { name = "nvim_lua" }
               },
             }
         end
     }, {
         "hrsh7th/cmp-nvim-lsp",
         "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip"
+        "L3MON4D3/LuaSnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-buffer",
     }
 }

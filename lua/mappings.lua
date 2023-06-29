@@ -42,20 +42,39 @@ bind("n", "<leader>uh", "<cmd>set invhlsearch<CR>")
 
 -- Telescope mapping
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>o', builtin.oldfiles, {})
+bind('n', '<leader>ff', builtin.find_files, {})
+bind('n', '<leader>g', builtin.live_grep, {})
+bind('n', '<leader>b', builtin.buffers, {})
+bind('n', '<leader>ht', builtin.help_tags, {})
+bind('n', '<leader>o', builtin.oldfiles, {})
 
 -- LSP MAPPINGS
+-- LSP SAGA
+bind("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+bind({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+bind("n", "gr", "<cmd>Lspsaga rename<CR>")
+bind("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
+bind("n","gt", "<cmd>Lspsaga goto_type_definition<CR>")
+bind("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+bind("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+bind("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+bind("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+bind("n", "[E", function()
+  require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end)
+bind("n", "]E", function()
+  require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+end)
+bind("n","<leader>to", "<cmd>Lspsaga outline<CR>")
+bind("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-vim.keymap.set('n', '<leader>Q', vim.diagnostic.setqflist)
+bind('n', '<leader>e', vim.diagnostic.open_float)
+bind('n', '[d', vim.diagnostic.goto_prev)
+bind('n', ']d', vim.diagnostic.goto_next)
+bind('n', '<leader>q', vim.diagnostic.setloclist)
+bind('n', '<leader>Q', vim.diagnostic.setqflist)
 
 
 -- Use LspAttach autocommand to only map the following keys
